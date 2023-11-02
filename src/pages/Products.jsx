@@ -47,7 +47,7 @@ const Product = () => {
               type="checkbox"
               id="women"
               name="Women"
-              value={"/search?type=women"}
+              value={"search?type=women"}
               onChange={(e) => {
                 if (e.target.checked) {
                   setParam(e.target.value);

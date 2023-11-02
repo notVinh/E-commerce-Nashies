@@ -1,21 +1,27 @@
 import { BsBox2 } from "react-icons/bs";
 import CheckoutCard from "../components/checkout/CheckoutCard";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import { addOrder } from "../redux/slices/checkoutSlice";
+import Success from "../components/Success";
+import { clearCart } from "../redux/slices/cartSlice";
 
 const Checkout = () => {
+  const { userInfo } = useSelector((state) => state.auth);
+
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
+  const [open, setOpen] = useState(false);
+  const [login, setLogin] = useState(false);
 
   const { cartItems, total } = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const getTime = () => {
     const today = new Date();
@@ -23,19 +29,36 @@ const Checkout = () => {
     return nextSevenday;
   };
 
+  const today = new Date().toJSON().slice(0, 10);
+
+  useEffect(() => {
+    if (userInfo) {
+      setLastname(userInfo.name);
+      setEmail(userInfo.email);
+      setAddress(userInfo.address);
+      setPhoneNum(userInfo.phone);
+      setLogin(true);
+    }
+  }, []);
+
   const handleSubmit = async () => {
     const data = {
-      name: firstname + lastname,
+      // name: firstname + lastname ,
+      name: lastname,
       address: address,
       email: email,
       phone: phoneNum,
       orderItems: cartItems,
       total: total,
+      date: today,
     };
 
-    console.log("order...", data);
+    // console.log("order...", data);
 
     dispatch(addOrder(data));
+
+    dispatch(clearCart());
+    setOpen(true);
   };
 
   return (
@@ -61,7 +84,7 @@ const Checkout = () => {
               </div> */}
               <div>
                 <div className="pb-5 text-left font-semibold">
-                  Enter your name and address:
+                  Your name and address:
                 </div>
                 <div>
                   {/* <input
@@ -95,6 +118,7 @@ const Checkout = () => {
                       className="block py-4 px-4 w-full text-sm text-gray-900 bg-transparent border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer rounded-lg"
                       placeholder=" "
                       required
+                      value={lastname}
                       onChange={(e) => setLastname(e.target.value)}
                     />
                     <label
@@ -112,6 +136,7 @@ const Checkout = () => {
                       className="block py-4 px-4 w-full text-sm text-gray-900 bg-transparent border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer rounded-lg"
                       placeholder=" "
                       required
+                      value={address}
                       onChange={(e) => setAddress(e.target.value)}
                     />
                     <label
@@ -133,6 +158,7 @@ const Checkout = () => {
                     className="block py-4 px-4 w-full text-sm text-gray-900 bg-transparent border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer rounded-lg"
                     placeholder=" "
                     required
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <label
@@ -150,6 +176,7 @@ const Checkout = () => {
                     className="block py-4 px-4 w-full text-sm text-gray-900 bg-transparent border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer rounded-lg"
                     placeholder=" "
                     required
+                    value={phoneNum}
                     onChange={(e) => setPhoneNum(e.target.value)}
                   />
                   <label
@@ -201,6 +228,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+      <Success isOpen={open} isLogin={login} />
     </div>
   );
 };

@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../redux/slices/userApiSlice";
 import { logout } from "../redux/slices/authSlice";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { CiUser } from "react-icons/ci";
 
 const Header = () => {
+  // const [isOpen, setIsOpen] = useState(false);
   // const amount = useSelector((store) => store.cart.amount);
+
   const { cartItems, amount } = useSelector((store) => store.cart);
 
   const { userInfo } = useSelector((state) => state.auth);
@@ -22,7 +24,7 @@ const Header = () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +35,7 @@ const Header = () => {
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">
             <img
-              src="https://raw.githubusercontent.com/notVinh/PORTFOLIO-v2/main/public/assets/icons/nashies-high-resolution-logo-color-on-transparentpng%20(2).png"
+              src="https://raw.githubusercontent.com/notVinh/NextJS-Prompt/main/public/assets/images/nashies-high-resolution-logo-color-on-transparentpng%20(2).png"
               className="mr-3 h-14"
               alt="Logo"
             />
@@ -75,8 +77,97 @@ const Header = () => {
                   )}
                 </NavLink>
               </div>
-              <div>
+              {/* <div>
                 <CiUser className="m-3 text-3xl cursor-pointer" />
+              </div> */}
+              <div className="relative group">
+                <AiOutlineUser
+                  className="m-3 text-3xl cursor-pointer "
+                  // onClick={() => setIsOpen(!isOpen)}
+                  // onClickCapture={setIsOpen(false)}
+                />
+                {/* <button
+                  id="dropdownDefaultButton"
+                  data-dropdown-toggle="dropdown"
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  type="button"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  Dropdown button
+                  <svg
+                    className="w-2.5 h-2.5 ml-2.5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m1 1 4 4 4-4"
+                    />
+                  </svg>
+                </button> */}
+
+                <div
+                  id="dropdown"
+                  className="group-hover:block hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute left-[-60px]"
+                >
+                  <ul
+                    className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="dropdownDefaultButton"
+                  >
+                    {userInfo ? (
+                      <>
+                        <li>
+                          <a
+                            href="/profile"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >
+                            Profile
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="/order"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >
+                            Order
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            onClick={logoutHandler}
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >
+                            Sign out
+                          </a>
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        <li>
+                          <a
+                            href="/login"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >
+                            Sign In
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="/register"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >
+                            Sign Up
+                          </a>
+                        </li>
+                      </>
+                    )}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

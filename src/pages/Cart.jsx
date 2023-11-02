@@ -5,6 +5,7 @@ import { calculateTotal } from "../redux/slices/cartSlice";
 import { NavLink } from "react-router-dom";
 
 const Cart = () => {
+  const { userInfo } = useSelector((state) => state.auth);
   const { cartItems, total } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -12,38 +13,61 @@ const Cart = () => {
     dispatch(calculateTotal());
   }, [cartItems]);
 
+  // console.log(cartItems);
+
   return (
-    <div className="my-28">
+    <div className="my-20 min-h-screen">
       <div className="flex mx-56">
         <div className="flex-1 mx-4">
           <div className="text-2xl font-semibold pb-5 text-left">Bag</div>
-          <div className="">
-            {cartItems.map((item) => (
-              <CartItem key={item.id} data={item} />
-            ))}
-          </div>
+          {cartItems.length > 0 ? (
+            <div className="">
+              {cartItems.map((item) => (
+                <CartItem key={item.id} data={item} />
+              ))}
+            </div>
+          ) : (
+            <div className="">
+              The shopping cart is currently empty, please buy something and
+              come back
+            </div>
+          )}
         </div>
 
-        <div className="w-[365px] border-x-2 px-4">
-          <div className="text-2xl font-semibold pb-5 text-left">Summary</div>
-          <div className="flex justify-between mb-2">
-            <div>Subtotal</div> <span>{total}</span>
-          </div>
-          <div className="flex justify-between mb-2">
-            <div>Estimated Delivery & Handling</div> <span>free</span>
-          </div>
-          <div className="flex justify-between py-4 my-3 border-y-gray-200 border-x-0 border">
-            <div> Total</div> <span className="font-medium">{total}</span>
-          </div>
-          <NavLink to="/checkout">
-            <div className="px-6 p-5 bg-black rounded-full text-white mb-3">
-              Guest Checkout
+        {cartItems.length > 0 && (
+          <div className="w-[365px] border-x-2 px-4">
+            <div className="text-2xl font-semibold pb-5 text-left">Summary</div>
+            <div className="flex justify-between mb-2">
+              <div>Subtotal</div> <span>{total}</span>
             </div>
-          </NavLink>
-          <div className="px-6 p-5 bg-black rounded-full text-white">
-            Member Checkout
+            <div className="flex justify-between mb-2">
+              <div>Estimated Delivery & Handling</div> <span>free</span>
+            </div>
+            <div className="flex justify-between py-4 my-3 border-y-gray-200 border-x-0 border">
+              <div> Total</div> <span className="font-medium">{total}</span>
+            </div>
+            {userInfo ? (
+              <NavLink to="/checkout">
+                <div className="px-6 p-5 bg-black rounded-full text-white mb-3">
+                  Checkout
+                </div>
+              </NavLink>
+            ) : (
+              <>
+                <NavLink to="/checkout">
+                  <div className="px-6 p-5 bg-black rounded-full text-white mb-3">
+                    Guest Checkout
+                  </div>
+                </NavLink>
+                <NavLink to={"/login"}>
+                  <div className="px-6 p-5 bg-black rounded-full text-white">
+                    Member Checkout
+                  </div>
+                </NavLink>
+              </>
+            )}
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

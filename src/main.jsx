@@ -10,7 +10,10 @@ import User from "./pages/User.jsx";
 import Github from "./pages/Github.jsx";
 import Login from "./pages/Login.jsx";
 
-import store from "./redux/store.js";
+import store, { persistor } from "./redux/store.js";
+
+import { PersistGate } from "redux-persist/integration/react";
+
 import { Provider } from "react-redux";
 import Register from "./pages/Register.jsx";
 import Products from "./pages/Products.jsx";
@@ -22,6 +25,8 @@ import AdminLayout from "./pages/layouts/AdminLayout.jsx";
 import Analytics from "./pages/admin/Analytics.jsx";
 import ProductsA from "./pages/admin/Products/ProductsA.jsx";
 import ProductDetail from "./pages/admin/Products/ProductDetail.jsx";
+import Profile from "./pages/Profile.jsx";
+import Order from "./pages/order.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +42,9 @@ const router = createBrowserRouter([
       { path: "products", element: <Products /> },
       { path: "cart", element: <Cart /> },
       { path: "checkout", element: <Checkout /> },
+      { path: "profile", element: <Profile /> },
+      { path: "order", element: <Order /> },
+
       { path: "vinh", element: <Vinh /> },
     ],
   },
@@ -47,7 +55,7 @@ const router = createBrowserRouter([
       { path: "main", element: <Main /> },
       { path: "analytic", element: <Analytics /> },
       { path: "products", element: <ProductsA /> },
-      { path: "products/detail", element: <ProductDetail /> },
+      { path: "products/detail/:productID", element: <ProductDetail /> },
     ],
   },
 ]);
@@ -55,7 +63,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { getAllProduct } from "../redux/slices/productSlide";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+    dispatch(getAllProduct(query));
+  }, [query]);
   return (
     <div className="">
       <div>

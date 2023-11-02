@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <Link to="/" className="flex items-center">
               <img
-                src="https://raw.githubusercontent.com/notVinh/PORTFOLIO-v2/main/public/assets/icons/nashies-high-resolution-logo-white-on-transparent-background%20(1).png"
+                src="https://raw.githubusercontent.com/notVinh/NextJS-Prompt/main/public/assets/images/nashies-high-resolution-logo-white-on-transparent-background%20(1).png"
                 className="mr-3 h-44"
                 alt="Logo"
               />

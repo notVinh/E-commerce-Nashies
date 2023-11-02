@@ -1,8 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const orderApi = import.meta.env.VITE_ORDER_API;
+
 export const addOrder = createAsyncThunk("addOrder", async (data) => {
-  const res = await fetch("http://localhost:5000/vshop/api/orders/add", {
+  // console.log(data);
+  const res = await fetch(`${orderApi}/add`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

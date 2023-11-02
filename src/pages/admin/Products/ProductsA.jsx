@@ -14,7 +14,6 @@ const ProductsA = () => {
     dispatch(getAllProduct(param));
   }, [param]);
 
-  console.log(data.products);
   return (
     <div className=" w-full mx-4 pt-2 shadow-xl rounded-xl bg-white">
       <nav className="">
@@ -28,9 +27,9 @@ const ProductsA = () => {
           </div>
         </div>
       </nav>
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+      {data.products.map((item) => (
+        <ProductCard key={item.id} data={item} />
+      ))}
     </div>
   );
 };
