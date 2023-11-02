@@ -26,7 +26,7 @@ import Analytics from "./pages/admin/Analytics.jsx";
 import ProductsA from "./pages/admin/Products/ProductsA.jsx";
 import ProductDetail from "./pages/admin/Products/ProductDetail.jsx";
 import Profile from "./pages/Profile.jsx";
-import Order from "./pages/order.jsx";
+import Order from "./pages/Order.jsx";
 
 const router = createBrowserRouter([
   {
