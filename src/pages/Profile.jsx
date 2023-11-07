@@ -32,8 +32,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="mx-36 my-14 text-left h-screen flex justify-center">
-      <form>
+    <div className="my-7 mx-12 py-7 px-16 bg-white rounded-xl h-screen">
+      <h2 className="mb-5 font-semibold">Your Profile</h2>
+      <form className="text-left flex flex-col justify-center mx-32">
         <div className="relative z-0 w-full mb-6 group">
           <input
             type="text"

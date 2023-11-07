@@ -17,7 +17,7 @@ export const AlwayOnTop = () => {
 
 const UserLayout = () => {
   return (
-    <div className="text-center font-mont bg-gray-50">
+    <div className="text-center font-mont bg-gray-100">
       <Header />
       <AlwayOnTop />
       <ToastContainer />

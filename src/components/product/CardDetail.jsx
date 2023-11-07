@@ -31,7 +31,7 @@ const CardDetail = ({ isOpen, onClose, data }) => {
     >
       <div className="bg-white w-[1200px] h-[700px] flex rounded-xl justify-between">
         <div className="flex items-center">
-          <div className="h-full pt-5">
+          <div className="h-full pt-8">
             <img
               className="w-20 h-20 object-cover m-4 rounded-md"
               src={data.img1}
@@ -72,19 +72,19 @@ const CardDetail = ({ isOpen, onClose, data }) => {
             <div className="py-5">{data.price}</div>
             <div>
               <div>Select Size</div>
-              <div>
+              <div className="pt-2">
                 <div className="px-5 py-2 w-32 h-12 border border-gray-300 rounded text-center">
                   EU 41
                 </div>
               </div>
             </div>
             <div
-              className=" border-black border text-center rounded-full p-3 hover:bg-black hover:text-white cursor-pointer"
+              className=" border-black border text-center rounded-full p-3 my-3 hover:bg-black hover:text-white cursor-pointer"
               onClick={handleAddToCart}
             >
               Add To Cart
             </div>
-            <div className=" border-black border text-center rounded-full p-3 hover:bg-black hover:text-white cursor-pointer flex justify-center items-center">
+            <div className=" border-black border text-center rounded-full p-3 my-3 hover:bg-black hover:text-white cursor-pointer flex justify-center items-center">
               Favorite
               <span>
                 <AiOutlineHeart className="ml-3" />

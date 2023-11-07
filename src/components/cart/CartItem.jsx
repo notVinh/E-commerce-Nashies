@@ -8,7 +8,12 @@ import {
   increaseAmount,
   removeItem,
 } from "../../redux/slices/cartSlice";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import {
+  MdKeyboardArrowDown,
+  MdKeyboardArrowLeft,
+  MdKeyboardArrowRight,
+  MdKeyboardArrowUp,
+} from "react-icons/md";
 
 const CartItem = ({ data }) => {
   const dispatch = useDispatch();
@@ -27,32 +32,28 @@ const CartItem = ({ data }) => {
   };
 
   return (
-    <div className="w-full border-b-2 pb-4">
+    <div className="w-full border-b-2 pb-5 mb-5">
       <div className="flex">
-        <img
-          className="h-[150px] w-[150px] object-cover"
-          src={data.img}
-          alt=""
-        />
-        <div className="mx-7 text-left flex-1">
-          <div className="flex justify-between mb-7">
-            <div>
-              <div className="text-lg font-semibold">{data.name}</div>
-              <div>Type</div>
-              <div>Color</div>
-              <div className="flex items-center justify-between flex-1">
-                <div className="">Size</div>
-                <div className="flex items-center">
-                  <div className="pr-5">Amount</div>
-                  <div className="text-center flex items-center">
-                    <div className="touch-none  mr-2">{data.quantity}</div>
-                    <div>
-                      <MdKeyboardArrowUp
-                        className="text-3xl cursor-pointer"
-                        onClick={() => dispatch(increaseAmount(data.id))}
-                      />
-
-                      <MdKeyboardArrowDown
+        <div className="flex h-full">
+          <img
+            className="h-full w-[150px] object-cover"
+            src={data.img}
+            alt=""
+          />
+          <div className="mx-7 text-left flex-1 w-[500px]">
+            <div className="flex flex-col justify-between h-full ">
+              <div>
+                <div className="text-lg font-semibold">{data.name}</div>
+                <div>Type</div>
+                <div>Color</div>
+                <div>Size</div>
+              </div>
+              <div className="flex items-center">
+                <div className="pr-5">Amount</div>
+                <div className="text-center flex items-center justify-between w-full">
+                  <div className="flex items-center">
+                    <button>
+                      <MdKeyboardArrowLeft
                         className="text-3xl cursor-pointer"
                         onClick={() => {
                           if (data.quantity === 1) {
@@ -63,16 +64,29 @@ const CartItem = ({ data }) => {
                           }
                         }}
                       />
-                    </div>
+                    </button>
+                    <div className="touch-none mx-2">{data.quantity}</div>
+                    <button>
+                      <MdKeyboardArrowRight
+                        className="text-3xl cursor-pointer"
+                        onClick={() => dispatch(increaseAmount(data.id))}
+                      />
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="text-lg font-medium">{data.total}</div>
           </div>
-          <div className="flex text-2xl">
-            <AiOutlineHeart className="mr-4" />
-            <FiTrash onClick={handleDeleteItem} />
+        </div>
+        <div className="flex flex-col justify-between">
+          <div className="text-lg font-medium">{data.total}</div>
+          <div className="flex text-2xl justify-center items-center">
+            <button>
+              <AiOutlineHeart className="mr-4" />
+            </button>
+            <button>
+              <FiTrash onClick={handleDeleteItem} />
+            </button>
           </div>
         </div>
       </div>

@@ -18,6 +18,7 @@ import {
 
 import storage from "redux-persist/lib/storage";
 import getOrder from "./slices/orderSlice";
+import filterReducer from "./slices/filterSlice";
 
 const persistConfig = {
   key: "root",
@@ -29,6 +30,7 @@ const persistedReducer = persistReducer(persistConfig, cartReducer);
 
 const store = configureStore({
   reducer: {
+    filter: filterReducer,
     order: getOrder,
     product: getProduct,
     // cart: cartReducer,

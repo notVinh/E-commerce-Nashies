@@ -16,26 +16,28 @@ const Cart = () => {
   // console.log(cartItems);
 
   return (
-    <div className="my-20 min-h-screen">
-      <div className="flex mx-56">
+    <div className="my-7 mx-12 py-7 px-16 bg-white rounded-xl">
+      <div className="flex">
         <div className="flex-1 mx-4">
           <div className="text-2xl font-semibold pb-5 text-left">Bag</div>
-          {cartItems.length > 0 ? (
-            <div className="">
-              {cartItems.map((item) => (
-                <CartItem key={item.id} data={item} />
-              ))}
-            </div>
-          ) : (
-            <div className="">
-              The shopping cart is currently empty, please buy something and
-              come back
-            </div>
-          )}
+          <div className=" max-h-screen  overflow-scroll">
+            {cartItems.length > 0 ? (
+              <div className="">
+                {cartItems.map((item) => (
+                  <CartItem key={item.id} data={item} />
+                ))}
+              </div>
+            ) : (
+              <div className="">
+                The shopping cart is currently empty, please buy something and
+                come back
+              </div>
+            )}
+          </div>
         </div>
 
         {cartItems.length > 0 && (
-          <div className="w-[365px] border-x-2 px-4">
+          <div className="w-[365px] border-l-2 pl-12">
             <div className="text-2xl font-semibold pb-5 text-left">Summary</div>
             <div className="flex justify-between mb-2">
               <div>Subtotal</div> <span>{total}</span>

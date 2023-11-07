@@ -1,25 +1,60 @@
 import React, { useState } from "react";
 import CardDetail from "./CardDetail";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 const Card = ({ data }) => {
   const [openModal, setOpenModal] = useState(false);
+  const dispatch = useDispatch();
+  const handleAddToCart = async () => {
+    const id = data.id;
+    const img = data.img;
+    const name = data.name;
+    const price = data.price;
+    const quantity = 1;
+    const totalPerItem = 0;
+    const res = await addToCart({
+      img,
+      name,
+      price,
+      id,
+      quantity,
+      totalPerItem,
+    });
+    dispatch(res);
+  };
   return (
     <>
-      <div className="w-[290px] h-[465px] " onClick={onclick}>
-        {data.img ? (
-          <img
-            className="h-[290px] w-[290px] object-cover"
-            src={data.img}
-            alt=""
-            onClick={() => setOpenModal(true)}
-          />
-        ) : (
-          <img
-            className="h-[290px] w-[290px] object-cover"
-            src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/aa4fa66b-198e-447e-a241-ff44a6dc639f/lebron-xxi-akoya-ep-basketball-shoes-4tVgfH.png"
-            alt=""
-          />
-        )}
+      <div className="m-6  " onClick={onclick}>
+        <div className="relative group ">
+          {data.img ? (
+            <img
+              className="h-[290px] w-[290px] object-cover"
+              src={data.img}
+              alt=""
+            />
+          ) : (
+            <img
+              className="h-[290px] w-[290px] object-cover"
+              src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/aa4fa66b-198e-447e-a241-ff44a6dc639f/lebron-xxi-akoya-ep-basketball-shoes-4tVgfH.png"
+              alt=""
+            />
+          )}
+          <div className="absolute group-hover:flex justify-center flex-col items-center hidden top-0 text-center bg-[#adadad] w-full h-full ">
+            <button
+              className="cursor-pointer bg-white px-5 py-2 rounded-full mb-3"
+              onClick={() => setOpenModal(true)}
+            >
+              Detail
+            </button>
+            <button
+              className="cursor-pointer bg-white px-5 py-2 rounded-full mb-3"
+              onClick={handleAddToCart}
+            >
+              Add to cart
+            </button>
+          </div>
+        </div>
         <div className="flex-col text-left">
           <div className="text-orange-400">{data.version}</div>
           <div className="py-0-1">

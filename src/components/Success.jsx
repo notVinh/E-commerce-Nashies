@@ -20,7 +20,10 @@ const Success = ({ isOpen, isLogin }) => {
         </p>
         <div className="flex flex-col items-center justify-between">
           <button className="my-5">
-            <NavLink to={"/"} className="py-3 px-10 rounded-full bg-green-300">
+            <NavLink
+              to={"/"}
+              className="py-3 px-10 rounded-full bg-green-300 text-white"
+            >
               Back to home
             </NavLink>
           </button>
@@ -28,7 +31,7 @@ const Success = ({ isOpen, isLogin }) => {
             <button className="my-5">
               <NavLink
                 to={"/order"}
-                className="py-3 px-12 rounded-full bg-green-300"
+                className="py-3 px-12 rounded-full bg-green-300 text-white"
               >
                 Check Order
               </NavLink>
@@ -37,7 +40,7 @@ const Success = ({ isOpen, isLogin }) => {
           <button className="my-5">
             <NavLink
               to={"/products"}
-              className="py-3 px-5 rounded-full bg-green-300"
+              className="py-3 px-5 rounded-full bg-green-300 text-white"
             >
               Continue shopping
             </NavLink>

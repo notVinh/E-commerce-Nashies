@@ -12,7 +12,7 @@ const OrderItem = ({ data }) => {
         <div className="w-1/3">{data.total}</div>
         <div className="w-1/3">
           <button
-            className="border-2 border-black rounded-full py-1 px-3 "
+            className="border-2 border-gray-400 rounded-full py-1 px-3 hover:bg-gray-400 hover:text-white"
             onClick={() => setOpen(true)}
           >
             Detail

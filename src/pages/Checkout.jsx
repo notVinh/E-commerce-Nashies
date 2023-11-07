@@ -62,8 +62,8 @@ const Checkout = () => {
   };
 
   return (
-    <div className="my-28">
-      <div className="flex mx-56">
+    <div className="my-7 mx-12 py-7 px-16 bg-white rounded-xl">
+      <div className="flex justify-between">
         <div className=" w-5/12">
           <div className="flex-col">
             <div>
@@ -194,7 +194,7 @@ const Checkout = () => {
                   </label>
                 </div> */}
                 <div
-                  className="py-4 px-5 border-2 rounded-full mt-8 bg-gray-400 text-white"
+                  className="py-4 px-5 border-2 rounded-full mt-8 cursor-pointer bg-white text-black hover:bg-gray-400 hover:text-white"
                   onClick={handleSubmit}
                 >
                   Continue
@@ -216,7 +216,7 @@ const Checkout = () => {
           <div className="flex justify-between py-4 my-3 border-y-gray-200 border-x-0 border">
             <div> Total</div> <span className="font-medium">{total}</span>
           </div>
-          <div className="text-lg font-semibold">
+          <div className="text-lg font-semibold my-10">
             {`Arrives: ${getTime().getDate()} - ${
               getTime().getMonth() + 1
             } - ${getTime().getFullYear()} (7 days from today)`}
