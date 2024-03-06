@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
+import ChatBot from "../../components/ChatBot";
 
 // alway on top when navigate page
 export const AlwayOnTop = () => {
@@ -23,6 +24,7 @@ const UserLayout = () => {
       <ToastContainer />
       <Outlet />
       <Footer />
+      <ChatBot />
     </div>
   );
 };

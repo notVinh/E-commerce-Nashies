@@ -64,7 +64,7 @@ const CardDetail = ({ isOpen, onClose, data }) => {
             />
           </div>
           <div className="">
-            <img className="w-[500px] rounded-xl" src={data.img} alt="" />
+            <img className="w-[500px] rounded-xl" src={data.image} alt="" />
           </div>
           <div className="mx-20 py-10 h-full flex-col justify-start text-left w-[400px]">
             <div className="text-2xl font-medium">{data.name}</div>

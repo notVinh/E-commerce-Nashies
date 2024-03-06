@@ -8,9 +8,9 @@ import axios from "axios";
 // });
 const productApi = import.meta.env.VITE_PRODUCT_API;
 
-export const getAllProduct = createAsyncThunk("getProducts", async () => {
-  // console.log(query);
-  return await axios.get(`${productApi}`).then((res) => res.data);
+export const getAllProduct = createAsyncThunk("getProducts", async (params) => {
+  console.log(params);
+  return await axios.get(`${productApi}${params}`).then((res) => res.data);
 });
 
 export const updateProduct = createAsyncThunk("updateProduct", async (data) => {
@@ -46,57 +46,57 @@ export const produceSlide = createSlice({
       state.error = action.error.message;
     });
   },
-  reducers: {
-    filterItem: (state, action) => {
-      // console.log(action.payload);
+  // reducers: {
+  //   filterItem: (state, action) => {
+  //     // console.log(action.payload);
 
-      if (action.payload.filterName === "all") {
-        state.filterProducts = [...state.products];
+  //     if (action.payload.filterName === "all") {
+  //       state.filterProducts = [...state.products];
 
-        if (action.payload.filterType) {
-          const filtered = state.filterProducts.filter((item) => {
-            if (action.payload.filterType) {
-              return item.type === action.payload.filterType;
-            }
-          });
-          state.filterProducts = filtered;
-        } else {
-          state.filterProducts = [...state.products];
-        }
-      } else {
-        const filtered = state.filterProducts.filter((item) => {
-          if (action.payload.filterType) {
-            return item.type === action.payload.filterType;
-          }
-          return item.name
-            .toLowerCase()
-            .includes(action.payload.filterName.toLowerCase());
-        });
-        state.filterProducts = filtered;
-      }
+  //       if (action.payload.filterType) {
+  //         const filtered = state.filterProducts.filter((item) => {
+  //           if (action.payload.filterType) {
+  //             return item.type === action.payload.filterType;
+  //           }
+  //         });
+  //         state.filterProducts = filtered;
+  //       } else {
+  //         state.filterProducts = [...state.products];
+  //       }
+  //     } else {
+  //       const filtered = state.filterProducts.filter((item) => {
+  //         if (action.payload.filterType) {
+  //           return item.type === action.payload.filterType;
+  //         }
+  //         return item.name
+  //           .toLowerCase()
+  //           .includes(action.payload.filterName.toLowerCase());
+  //       });
+  //       state.filterProducts = filtered;
+  //     }
 
-      if (action.payload.searchText) {
-        const searchItems = state.filterProducts.filter((item) =>
-          item.name
-            .toLowerCase()
-            .includes(action.payload.searchText.toLowerCase())
-        );
-        state.filterProducts = searchItems;
-      }
+  //     if (action.payload.searchText) {
+  //       const searchItems = state.filterProducts.filter((item) =>
+  //         item.name
+  //           .toLowerCase()
+  //           .includes(action.payload.searchText.toLowerCase())
+  //       );
+  //       state.filterProducts = searchItems;
+  //     }
 
-      // if (action.payload.pageNum) {
-      //   // console.log(action.payload.pageNum);
+  //     // if (action.payload.pageNum) {
+  //     //   // console.log(action.payload.pageNum);
 
-      //   const filter = state.filterProducts.filter((item) => {
-      //     //   let pageNum = action.payload.pageNum;
-      //     // let limit = 2;
-      //     // let totalPages = Math.ceil(state.filterProducts.length / limit);
-      //     return item.id < 3;
-      //   });
-      //   state.filterProducts = filter;
-      // }
-    },
-  },
+  //     //   const filter = state.filterProducts.filter((item) => {
+  //     //     //   let pageNum = action.payload.pageNum;
+  //     //     // let limit = 2;
+  //     //     // let totalPages = Math.ceil(state.filterProducts.length / limit);
+  //     //     return item.id < 3;
+  //     //   });
+  //     //   state.filterProducts = filter;
+  //     // }
+  //   },
+  // },
 
   // pagination: (state,action) => {
   //   let pageNum = 1;

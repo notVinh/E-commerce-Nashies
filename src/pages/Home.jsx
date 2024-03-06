@@ -12,7 +12,12 @@ const Home = () => {
   return (
     <div className="">
       <div>
-        <video src="video/showcase.mp4" autoPlay muted loop></video>
+        <video
+          src="https://res.cloudinary.com/dshvydi5f/video/upload/v1709050189/vShop/videos/showcase_nndtm4.mp4"
+          autoPlay
+          muted
+          loop
+        ></video>
         {/* <img src="img/bg-main.png" alt="" /> */}
         <nav className="mt-12 mb-24">
           <div className="font-extrabold text-6xl">SHAPE YOUR STYLE</div>
@@ -30,7 +35,7 @@ const Home = () => {
           <div className="w-1/2 relative ">
             <img
               className="object-contain pr-1 "
-              src="img/mansplash.png"
+              src="https://res.cloudinary.com/dshvydi5f/image/upload/v1709050095/vShop/images/mansplash_b2odzw.png"
               alt=""
             />
             <div className="absolute left-[42px] bottom-[42px] text-white font-semibold text-left">
@@ -47,7 +52,7 @@ const Home = () => {
           <div className="w-1/2 relative">
             <img
               className=" object-contain pl-1"
-              src="img/womansplash.png"
+              src="https://res.cloudinary.com/dshvydi5f/image/upload/v1709050096/vShop/images/womansplash_j6ahxo.png"
               alt=""
             />
             <div className="absolute right-[42px] bottom-[42px] text-white font-semibold text-right">
@@ -64,7 +69,12 @@ const Home = () => {
         </nav>
         <nav className="mx-10 my-10">
           <div className="text-left font-medium text-2xl mb-6">The Latest</div>
-          <video src="video/showcase2.mp4" autoPlay muted loop></video>
+          <video
+            src="https://res.cloudinary.com/dshvydi5f/video/upload/v1709050188/vShop/videos/showcase2_cdv95u.mp4"
+            autoPlay
+            muted
+            loop
+          ></video>
         </nav>
         <nav className="t-12 mb-24">
           <div className="font-extrabold text-6xl">RUN YOUR RUN</div>
@@ -85,14 +95,14 @@ const Home = () => {
           <div className="w-1/2 relative ">
             <img
               className="object-cover w-full h-screen pr-1 "
-              src="img/product1.jpg"
+              src="https://res.cloudinary.com/dshvydi5f/image/upload/v1709050093/vShop/images/product1_bflole.jpg"
               alt=""
             />
           </div>
           <div className="w-1/2 relative">
             <img
               className=" object-cover w-full h-screen pl-1"
-              src="img/product2.jpg"
+              src="https://res.cloudinary.com/dshvydi5f/image/upload/v1709050095/vShop/images/product2_lmlsf9.jpg"
               alt=""
             />
           </div>

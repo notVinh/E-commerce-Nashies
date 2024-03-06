@@ -8,7 +8,7 @@ const Card = ({ data }) => {
   const dispatch = useDispatch();
   const handleAddToCart = async () => {
     const id = data.id;
-    const img = data.img;
+    const img = data.image;
     const name = data.name;
     const price = data.price;
     const quantity = 1;
@@ -27,10 +27,10 @@ const Card = ({ data }) => {
     <>
       <div className="m-6  " onClick={onclick}>
         <div className="relative group ">
-          {data.img ? (
+          {data.image ? (
             <img
               className="h-[290px] w-[290px] object-cover"
-              src={data.img}
+              src={data.image}
               alt=""
             />
           ) : (
@@ -59,7 +59,7 @@ const Card = ({ data }) => {
           <div className="text-orange-400">{data.version}</div>
           <div className="py-0-1">
             <div>{data.name}</div>
-            <div className="text-gray-500">{data.type}</div>
+            <div className="text-gray-500">{data.gentle}</div>
             <div className="text-gray-500">{data.color}</div>
           </div>
 
