@@ -7,6 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import ChatBot from "../../components/ChatBot";
 
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
 // alway on top when navigate page
 export const AlwayOnTop = () => {
   const { pathname } = useLocation();
@@ -25,6 +27,7 @@ const UserLayout = () => {
       <Outlet />
       <Footer />
       <ChatBot />
+      <SpeedInsights />
     </div>
   );
 };

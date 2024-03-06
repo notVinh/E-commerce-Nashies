@@ -9,7 +9,7 @@ import axios from "axios";
 const productApi = import.meta.env.VITE_PRODUCT_API;
 
 export const getAllProduct = createAsyncThunk("getProducts", async (params) => {
-  console.log(params);
+  // console.log(params);
   return await axios.get(`${productApi}${params}`).then((res) => res.data);
 });
 
