@@ -63,11 +63,11 @@ const Checkout = () => {
 
   return (
     <div className="my-7 mx-12 py-7 px-16 bg-white rounded-xl">
-      <div className="flex justify-between">
-        <div className=" w-5/12">
-          <div className="flex-col">
+      <div className="flex justify-between xl:flex-row flex-col">
+        <div className=" xl:w-5/12">
+          <div className="flex-col ">
             <div>
-              <div className="text-left text-xl font-semibold ">
+              <div className="xl:text-left text-center text-xl font-semibold ">
                 How would you like to get your order?
               </div>
               <div className="w-full p-[19px] border-black border-2 text-left flex items-center rounded-xl my-7">
@@ -148,7 +148,7 @@ const Checkout = () => {
                   </div>
                 </div>
                 <div className="pb-5 text-left font-semibold">
-                  Your contact information
+                  Your contact information:
                 </div>
                 <div className="relative z-0 w-full mb-6 group text-left">
                   <input
@@ -203,7 +203,7 @@ const Checkout = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1 ml-32">
+        <div className="flex-1 xl:ml-32 xl:pt-0 pt-5 xl:mt-0 mt-5 xl:border-none border-t-2">
           <div className="text-xl font-semibold pb-5 text-left">
             Order Summary
           </div>

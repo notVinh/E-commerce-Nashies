@@ -25,7 +25,10 @@ const Card = ({ data }) => {
   };
   return (
     <>
-      <div className="m-6  " onClick={onclick}>
+      <div
+        className="xl:m-6 xl:p-0 p-5 m-3 bg-white rounded-lg"
+        onClick={onclick}
+      >
         <div className="relative group ">
           {data.image ? (
             <img

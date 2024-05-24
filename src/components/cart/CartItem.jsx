@@ -32,25 +32,30 @@ const CartItem = ({ data }) => {
   };
 
   return (
-    <div className="w-full border-b-2 pb-5 mb-5">
-      <div className="flex">
-        <div className="flex h-full">
+    <div className="w-full border-b-2 pb-5 mb-5 ">
+      <div className="flex xl:flex-row flex-col">
+        <div className="flex h-full w-full xl:flex-row flex-col items-center">
           <img
-            className="h-full w-[150px] object-cover"
+            className="h-[150px] w-[150px] object-cover"
             src={data.img}
             alt=""
           />
-          <div className="mx-7 text-left flex-1 w-[500px]">
-            <div className="flex flex-col justify-between h-full ">
+          <div className="mx-7 text-left flex-1 xl:w-[500px] w-full">
+            <div className="flex flex-col justify-between h-full xl:mt-0 xl:border-t-0 mt-2 border-t-2 border-gray-200">
               <div>
-                <div className="text-lg font-semibold">{data.name}</div>
-                <div>Type</div>
+                <div className="text-lg font-semibold text-center xl:mb-0 mb-2 w-full">
+                  {data.name}
+                </div>
+                <div className="flex w-full xl:justify-start justify-between">
+                  <div>Type</div>
+                  {/* <div className="xl:mr-0 mr-5">unices</div> */}
+                </div>
                 <div>Color</div>
                 <div>Size</div>
               </div>
-              <div className="flex items-center">
-                <div className="pr-5">Amount</div>
-                <div className="text-center flex items-center justify-between w-full">
+              <div className="flex w-full items-center  justify-between">
+                <div className="text-center xl:justify-start flex items-center justify-between w-full">
+                  <div className="pr-5">Amount</div>
                   <div className="flex items-center">
                     <button>
                       <MdKeyboardArrowLeft
@@ -78,9 +83,11 @@ const CartItem = ({ data }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-between">
-          <div className="text-lg font-medium">{data.total}</div>
-          <div className="flex text-2xl justify-center items-center">
+        <div className="flex xl:flex-col justify-between border-t-2 mt-4 pt-2">
+          <div className="text-lg font-medium xl:order-none order-2">
+            {data.total}
+          </div>
+          <div className="flex text-2xl justify-center items-center ">
             <button>
               <AiOutlineHeart className="mr-4" />
             </button>

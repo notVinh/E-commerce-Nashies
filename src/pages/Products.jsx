@@ -120,8 +120,8 @@ const Product = () => {
 
   return (
     <div className="flex justify-center w-full px-12 py-7">
-      <div className="w-3/12 flex-col text-left bg-white p-4 rounded-xl max-h-screen">
-        <div className="border-gray-300 border-b-1 pb-5 relative">
+      <div className="w-3/12 flex-col text-left bg-white p-4 rounded-xl max-h-screen xl:flex hidden">
+        <div className="border-gray-300 border-b-1 pb-5 relative ">
           <div className="font-bold text-center pb-5">Search</div>
           <input
             type="text"
@@ -319,7 +319,7 @@ const Product = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-full flex flex-col justify-center p-6 bg-white mx-10 rounded-xl">
+      <div className="w-full h-full flex flex-col justify-center xl:p-6 bg-transparent xl:bg-white xl:mx-10 rounded-xl">
         <div className="justify-end flex items-center relative">
           <button
             data-dropdown-toggle="dropdownNavbar"
@@ -388,7 +388,7 @@ const Product = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-wrap justify-start">
+        <div className="flex flex-wrap xl:justify-start justify-center w-full ">
           {data.products.map((item) => (
             // <Card
             //   img={item.img}
@@ -402,7 +402,7 @@ const Product = () => {
             <Card key={item.id} data={item} />
           ))}
         </div>
-        <div className="flex justify-center mt-5 items-center">
+        <div className="flex justify-center mt-5 items-center ">
           <button
             onClick={() => {
               if (page === 1) {

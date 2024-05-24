@@ -17,10 +17,10 @@ const Cart = () => {
 
   return (
     <div className="my-7 mx-12 py-7 px-16 bg-white rounded-xl">
-      <div className="flex">
-        <div className="flex-1 mx-4">
+      <div className="flex xl:flex-row flex-col">
+        <div className="flex-1 xl:mx-4">
           <div className="text-2xl font-semibold pb-5 text-left">Bag</div>
-          <div className=" max-h-screen  overflow-scroll">
+          <div className=" max-h-screen overflow-scroll">
             {cartItems.length > 0 ? (
               <div className="">
                 {cartItems.map((item) => (
@@ -37,7 +37,7 @@ const Cart = () => {
         </div>
 
         {cartItems.length > 0 && (
-          <div className="w-[365px] border-l-2 pl-12">
+          <div className="xl:w-[365px] xl:border-l-2 xl:pl-12">
             <div className="text-2xl font-semibold pb-5 text-left">Summary</div>
             <div className="flex justify-between mb-2">
               <div>Subtotal</div> <span>{total}</span>
