@@ -15,8 +15,8 @@ const Order = () => {
   }, []);
   return (
     <div className="my-7 mx-12 py-7 px-16 bg-white rounded-xl flex justify-center">
-      <div className="h-screen w-1/2 ">
-        <div className="flex justify-evenly mx-1 my-5 font-semibold text-center">
+      <div className="h-screen w-full ">
+        <div className="flex mx-1 my-5 font-semibold text-center">
           <h2 className="w-1/3">Date</h2>
           <h2 className="w-1/3">Total</h2>
           <h2 className="w-1/3">Action</h2>
